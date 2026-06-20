@@ -24,6 +24,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Extension-Template"
+rootProject.name = "Python LSP"
 include(":app")
  

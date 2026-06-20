@@ -1,14 +1,15 @@
 {
   "$schema": "schema/schema.json",
-  "id": "com.rk.demo",
-  "name": "Extension template",
-  "mainClass": "com.rk.demo.Main",
+  "id": "com.rk.xededitor.python",
+  "name": "Python LSP",
+  "mainClass": "com.rk.xededitor.python.Main",
   "version": "1.0.0",
-  "description": "A demo extension template project",
+  "description": "Python Language Server Protocol support for Xed-Editor",
   "author": {
-    "displayName": "Unknown"
+    "displayName": "Xed-Editor",
+    "github": "Xed-Editor"
   },
   "minAppVersion": 87,
-  "maxAppVersion": 87,
-  "repository": "https://github.com/Xed-Editor/Extension-Template"
+  "maxAppVersion": 95,
+  "repository": "https://github.com/Xed-Editor/Python-LSP"
 }

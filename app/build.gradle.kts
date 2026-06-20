@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.rk.demo"
+    namespace = "com.rk.xededitor"
     compileSdk = 37
 
     defaultConfig {
@@ -199,6 +199,7 @@ tasks.register<Zip>("createFinalZip") {
     val iconFile = File(rootDir, "icon.png")
     val readmeFile = File(rootDir, "README.md")
     val changelogFile = File(rootDir, "CHANGELOG.md")
+    val binDir = File(rootDir, "bin")
 
     archiveFileName.set("$extensionName.zip")
 
@@ -207,7 +208,7 @@ tasks.register<Zip>("createFinalZip") {
     from(iconFile) { into("") }
     from(readmeFile) { into("") }
     from(changelogFile) { into("") }
+    from(binDir) { into("bin") }
 
     destinationDirectory.set(File(rootDir, "output"))
 }
-
