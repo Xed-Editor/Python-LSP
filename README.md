@@ -1,57 +1,82 @@
-# Xed-Editor Extension Template
+# Python LSP Extension for Xed-Editor
 
-This repository is a starting point for building extensions for **Xed-Editor (Karbon)**.
-It includes a ready-to-use template, build scripts, and a simple folder structure so you can focus on writing your extension instead of setting up the environment.
-
-> [!TIP]
-> See the [documentation](https://xed-editor.github.io/Xed-Docs/docs/extensions) page for more details about creating and managing extensions for Xed-Editor.
+An extension for [Xed-Editor](https://github.com/Xed-Editor/Xed-Editor) that provides full Python language support using the Language Server Protocol (LSP). It is powered by **ty**, Astral's extremely fast, Rust-based Python type checker and language server.
 
 ---
 
-## Getting Started
+## Features
 
-### 1. Clone the Template
-
-```bash
-git clone https://github.com/Xed-Editor/Extension-Template
-cd Extension-Template
-```
-
----
-
-### 2. Configure Your Extension
-
-Before building, update the following in `manifest.json`:
-
-* `name` – your extension’s name
-* `version` – version of your extension
-* `author` – Developer of the extension
-
->[!WARNING]
-If you rename the main class or move it to another package/folder, **you must update the `mainClass` field in `manifest.json`**, or the extension will not load.
+- **Blazing Fast Performance**: Powered by the Rust-written type checker (`ty`) ensuring instant feedback and low latency on Android.
+- **Diagnostics**: Real-time syntax and type checking diagnostics.
+- **Code Completion**: Context-aware autocompletes as you type.
+- **Navigation**:
+  - Go to Definition
+  - Go to Declaration
+  - Go to Type Definition
+  - Find References
+- **Hover Info & Inlay Hints**: Rich tooltips showing variable types, function signatures, and documentation.
+- **Pre-compiled Binaries**: Includes architecture-specific binaries for Android (`arm64-v8a`, `armeabi-v7a`, `x86_64`), removing the need for manual configuration or terminal setup.
 
 ---
 
-### 3. Build the Extension
+## Compatibility & Requirements
 
-To build the extension in **debug mode**, run:
+> [!IMPORTANT]
+> - **Xed-Editor Version**: Supported on Xed-Editor versions between code `87` and `95`.
+> - **Supported Architectures**: Android devices with `arm64-v8a`, `armeabi-v7a`, or `x86_64` CPU architectures.
+> - **Android Version**: Requires Android 8.0 (API 26) or higher.
 
+---
+
+## How to Build the Extension
+
+To build the extension package from source:
+
+### 1. Prerequisites
+- [JDK 21](https://adoptium.net/) or newer.
+- Android SDK configured (via environment variable `ANDROID_HOME` or Android Studio).
+
+### 2. Build Commands
+
+To build the extension in **debug mode** (recommended for testing):
 ```bash
 ./compileDebug
 ```
 
-(You can create your own release script later if needed.)
+To build in **release mode** (for optimization and packaging):
+```bash
+./compileRelease
+```
+
+### 3. Retrieve the Extension Package
+Once the build script finishes successfully, the final extension archive will be output to:
+```
+output/Python LSP.zip
+```
 
 ---
 
-### 4. Find the Output
+## Installation
 
-After a successful build, your extension package will be created here:
+1. Copy the generated `Python LSP.zip` file to your Android device.
+2. Open **Xed-Editor** (Karbon).
+3. Navigate to **Settings** > **Extensions**.
+4. Import/install the `Python LSP.zip` file.
+5. Restart the editor if prompted. Open any `.py` file to start writing with autocompletion, type diagnostics, and hover information!
 
-```
-output/YourExtensionName.zip
-```
+---
 
-This ZIP file is what you load into **Xed-Editor** as a extension.
+## Project Structure
 
-This includes guides, API references, examples, and best practices for developing your extensions.
+- `app/` - The main Kotlin application wrapper for Android.
+  - `src/main/java/com/rk/xededitor/python/` - Contains the extension entrypoint ([Main.kt](file:///home/rohit/Projects/Python-LSP/app/src/main/java/com/rk/xededitor/python/Main.kt)) and server adapter ([PythonServer.kt](file:///home/rohit/Projects/Python-LSP/app/src/main/java/com/rk/xededitor/python/PythonServer.kt)).
+- `bin/` - Pre-compiled architecture-specific binaries of the `ty` LSP server (`arm64-v8a`, `armeabi-v7a`, `x86_64`).
+- `schema/` - JSON schema used for validating extension metadata ([schema.json](file:///home/rohit/Projects/Python-LSP/schema/schema.json)).
+- `manifest.json` - Metadata config file containing versioning, ID, author, and description ([manifest.json](file:///home/rohit/Projects/Python-LSP/manifest.json)).
+
+---
+
+## License & Repository
+
+- **Repository**: [github.com/Xed-Editor/Python-LSP](https://github.com/Xed-Editor/Python-LSP)
+- **Author**: [Xed-Editor](https://github.com/Xed-Editor)
