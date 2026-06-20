@@ -3,7 +3,7 @@
   "id": "com.rk.xededitor.python",
   "name": "Python LSP",
   "mainClass": "com.rk.xededitor.python.Main",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Python Language Server Protocol support for Xed-Editor",
   "author": {
     "displayName": "Xed-Editor",
