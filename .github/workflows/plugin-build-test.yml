@@ -33,13 +33,13 @@ jobs:
       - name: Make scripts executable
         run: chmod +x ./gradlew && chmod +x ./compileDebug && chmod +x ./compileRelease
 
-      # Build (Debug)
-      - name: Compile Debug
-        run: ./compileDebug
-        
+
+      - name: Compile Release
+        run: ./compileRelease
+
       # Upload extension artifacts
       - name: Upload ZIP
         uses: actions/upload-artifact@v4
         with:
-          name: extension-build
+          name: extension-build-conpressed
           path: output/*.zip
