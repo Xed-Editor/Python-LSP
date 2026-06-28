@@ -10,6 +10,6 @@
     "github": "Xed-Editor"
   },
   "minAppVersion": 88,
-  "maxAppVersion": 96,
+  "maxAppVersion": null,
   "repository": "https://github.com/Xed-Editor/Python-LSP"
 }
